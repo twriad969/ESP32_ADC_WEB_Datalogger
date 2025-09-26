@@ -1,4 +1,4 @@
-#  ESP32 Web Datalogger 📈
+#  ESP32 ADC Web Datalogger 📈
 
 A highly configurable, Wi-Fi enabled, multi-channel ADC data logger running on an ESP32-C3. It features a captive portal and a web interface for on-the-fly sensor calibration and data extraction, requiring no client-side software or internet connection.
 
