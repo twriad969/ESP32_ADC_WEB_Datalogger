@@ -48,7 +48,7 @@ To get this project up and running, follow these steps.
 
 - setup:
     - 1_clone_repository:
-        - command: git clone [https://github.com/your-username/esp32-web-datalogger.git](https://github.com/your-username/esp32-web-datalogger.git)
+        - command: git clone [https://github.com/sergio-isidoro/ESP32_ADC_WEB_Datalogger.git](https://github.com/sergio-isidoro/ESP32_ADC_WEB_Datalogger.git)
     - 2_configure_arduino_ide:
         - board_manager: Make sure you have the ESP32 board definitions installed. Select "ESP32C3 Dev Module".
         - libraries: Install the required libraries from the Library Manager:
